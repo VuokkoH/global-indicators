@@ -81,6 +81,51 @@ GTFS = {'maiduguri':[],
                         'Monorail'    : {'route_types': [12],'agency_id': None},
                     }
                    }],
+        'helsinki':[{'gtfs_filename': 'GTFS/gtfs_input_data/gtfs_helsinki/gtfs_helsinki_hsl_20210927',
+                    'gtfs_provider' : 'https://www.hsl.fi/',
+                    'gtfs_year' : '2021',
+                    'start_date_mmdd' : '20210927',
+                    'end_date_mmdd' : '20210927',
+                     'bbox' : (23.7526440009613005,59.9022672158150016, 25.9895649291661996,60.8407784987748030), # THIS IS NOW FUA BBOX
+                     'crs':'epsg:32635',
+                    'validation': False,
+                    'modes' : {
+                        # as per https://developers.google.com/transit/gtfs/reference#routestxt
+                        'Tram'        : {'route_types': [ 0],'agency_id': None},
+                        'Metro'       : {'route_types': [ 1],'agency_id': None},
+                        'Rail'        : {'route_types': [ 2],'agency_id': None},
+                        'Bus'         : {'route_types': [ 3],'agency_id': None},
+                        'Ferry'       : {'route_types': [ 4],'agency_id': None},
+                        'Cable tram'  : {'route_types': [ 5],'agency_id': None},
+                        'Aerial lift' : {'route_types': [ 6],'agency_id': None},
+                        'Funicular'   : {'route_types': [ 7],'agency_id': None},
+                        'Trolleybus'  : {'route_types': [11],'agency_id': None},
+                        'Monorail'    : {'route_types': [12],'agency_id': None},
+                    }
+                   }],
+                   
+            'helsinki_ghs':[{'gtfs_filename': 'GTFS/gtfs_input_data/gtfs_helsinki/gtfs_helsinki_hsl_20210927',
+                    'gtfs_provider' : 'https://www.hsl.fi/',
+                    'gtfs_year' : '2021',
+                    'start_date_mmdd' : '20210927',
+                    'end_date_mmdd' : '20210927',
+                     'bbox' : (23.7526440009613005,59.9022672158150016, 25.9895649291661996,60.8407784987748030), # THIS IS NOW FUA BBOX
+                     'crs':'epsg:32635',
+                    'validation': False,
+                    'modes' : {
+                        # as per https://developers.google.com/transit/gtfs/reference#routestxt
+                        'Tram'        : {'route_types': [ 0],'agency_id': None},
+                        'Metro'       : {'route_types': [ 1],'agency_id': None},
+                        'Rail'        : {'route_types': [ 2],'agency_id': None},
+                        'Bus'         : {'route_types': [ 3],'agency_id': None},
+                        'Ferry'       : {'route_types': [ 4],'agency_id': None},
+                        'Cable tram'  : {'route_types': [ 5],'agency_id': None},
+                        'Aerial lift' : {'route_types': [ 6],'agency_id': None},
+                        'Funicular'   : {'route_types': [ 7],'agency_id': None},
+                        'Trolleybus'  : {'route_types': [11],'agency_id': None},
+                        'Monorail'    : {'route_types': [12],'agency_id': None},
+                    }
+                   }],
 		'bangkok':[{'gtfs_filename': 'GTFS/gtfs_input_data/gtfs_thailand_bangkok/gtfs_thailand_bangkok_2021',
                     'gtfs_provider' : 'https://namtang.otp.go.th/',
                     'gtfs_year' : '2021',
@@ -169,6 +214,7 @@ GTFS = {'maiduguri':[],
                         'Monorail'    : {'route_types': [12],'agency_id': None},
                     }
                    }],
+                  
 		'graz':[],
 		'ghent':[],
 		'bern':[{'gtfs_filename': 'GTFS/gtfs_input_data/gtfs_swiss_bern/gtfs_swiss_bern_SCF_20181209',
