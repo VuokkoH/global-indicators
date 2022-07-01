@@ -4,14 +4,17 @@ Project, study region and resource parameters are defined using spreadsheets in 
  
 # set up spatial database container, based on Postgis
 
+Note! The original instructions are with `mdillon/postgis`, but it does not seem to have pgrouting installed. 
+Updated this to (starefossen/pgrouting)[https://hub.docker.com/r/starefossen/pgrouting] that is based on mdillon/postgis, but contains pgrouting readily installed:
+
 ```
-docker pull mdillon/postgis
+docker pull starefossen/pgrouting
 ```
 
 # run postgis server container
 
 ```
-docker run --name=postgis -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=password -e POSTGRES_DBNAME=ind_global  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql mdillon/postgis
+docker run --name=pgrouting -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=password -e POSTGRES_DBNAME=ind_global  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql starefossen/pgrouting
 ```
 
 # run analysis environment 
