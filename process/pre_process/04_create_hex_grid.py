@@ -31,95 +31,95 @@ def main():
     
     engine = create_engine(f"postgresql://{db_user}:{db_pwd}@{db_host}/{db}")
    
-    if not engine.dialect.has_table(engine, hex_grid):  
-        # Create hex grid using algorithm from Hugh Saalmans (@minus34) under Apache 2 licence
-        # https://github.com/minus34/postgis-scripts/blob/master/hex-grid/create-hex-grid-function.sql
-        curs.execute(hex_function)
-        conn.commit()
-        
-        # create hexes with some additional offsetting to ensure complete study region coverage
-        sql = f'''
-        CREATE TABLE IF NOT EXISTS {hex_grid} AS
-        SELECT row_number() OVER () AS hex_id, geom
-          FROM (
-          SELECT hex_grid({hex_area_km2}::float, 
-                          ST_XMin(geom)-{hex_buffer}, 
-                          ST_YMin(geom)-{hex_buffer}, 
-                          ST_XMax(geom)+{hex_buffer}, 
-                          ST_YMax(geom)+{hex_buffer}, 
-                          {srid}, 
-                          {srid}, 
-                          {srid}) geom, geom AS old_geom
-        FROM {buffered_study_region}) t
-        WHERE ST_Intersects(geom,old_geom);
-        CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid}_idx ON {hex_grid} (hex_id);
-        CREATE INDEX IF NOT EXISTS {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
-        '''     
-        
-        engine.execute(sql)     
-    else:
-        print(f"  - The table {hex_grid} has already been processed.") 
+    #if not engine.dialect.has_table(engine, hex_grid):  
+    # Create hex grid using algorithm from Hugh Saalmans (@minus34) under Apache 2 licence
+    # https://github.com/minus34/postgis-scripts/blob/master/hex-grid/create-hex-grid-function.sql
+    curs.execute(hex_function)
+    conn.commit()
     
-    if not engine.dialect.has_table(engine, hex_grid_100m):  
-        # create hexes with some additional offsetting to ensure complete study region coverage
-        sql = f'''
-        CREATE TABLE IF NOT EXISTS {hex_grid} AS
-        SELECT row_number() OVER () AS hex_id, geom
-          FROM (
-          SELECT hex_grid({hex_area_km2_100_diag}::float, 
-                          ST_XMin(geom)-{hex_buffer}, 
-                          ST_YMin(geom)-{hex_buffer}, 
-                          ST_XMax(geom)+{hex_buffer}, 
-                          ST_YMax(geom)+{hex_buffer}, 
-                          {srid}, 
-                          {srid}, 
-                          {srid}) geom, geom AS old_geom
-        FROM {buffered_study_region}) t
-        WHERE ST_Intersects(geom,old_geom);
-        CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid}_idx ON {hex_grid} (hex_id);
-        CREATE INDEX IF NOT EXISTS {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
-        '''
-        
-        engine.execute(sql)     
-    else:
-        print(f"  - The table {hex_grid_100m} has already been processed.") 
+    # create hexes with some additional offsetting to ensure complete study region coverage
+    sql = f'''
+    CREATE TABLE IF NOT EXISTS {hex_grid} AS
+    SELECT row_number() OVER () AS hex_id, geom
+      FROM (
+      SELECT hex_grid({hex_area_km2}::float, 
+                      ST_XMin(geom)-{hex_buffer}, 
+                      ST_YMin(geom)-{hex_buffer}, 
+                      ST_XMax(geom)+{hex_buffer}, 
+                      ST_YMax(geom)+{hex_buffer}, 
+                      {srid}, 
+                      {srid}, 
+                      {srid}) geom, geom AS old_geom
+    FROM {buffered_study_region}) t
+    WHERE ST_Intersects(geom,old_geom);
+    CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid}_idx ON {hex_grid} (hex_id);
+    CREATE INDEX IF NOT EXISTS {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
+    '''     
     
-    if not engine.dialect.has_table(engine, hex_grid_250m):   
-        # create hexes with some additional offsetting to ensure complete study region coverage
-        sql = f'''
-        CREATE TABLE IF NOT EXISTS {hex_grid} AS
-        SELECT row_number() OVER () AS hex_id, geom
-          FROM (
-          SELECT hex_grid({hex_area_km2_250_diag}::float, 
-                          ST_XMin(geom)-{hex_buffer}, 
-                          ST_YMin(geom)-{hex_buffer}, 
-                          ST_XMax(geom)+{hex_buffer}, 
-                          ST_YMax(geom)+{hex_buffer}, 
-                          {srid}, 
-                          {srid}, 
-                          {srid}) geom, geom AS old_geom
-        FROM {buffered_study_region}) t
-        WHERE ST_Intersects(geom,old_geom);
-        CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid}_idx ON {hex_grid} (hex_id);
-        CREATE INDEX IF NOT EXISTS {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
-        '''    
+    engine.execute(sql)     
+    #else:
+    #    print(f"  - The table {hex_grid} has already been processed.") 
+    
+    #if not engine.dialect.has_table(engine, hex_grid_100m):  
+    # create hexes with some additional offsetting to ensure complete study region coverage
+    sql = f'''
+    CREATE TABLE IF NOT EXISTS {hex_grid} AS
+    SELECT row_number() OVER () AS hex_id, geom
+      FROM (
+      SELECT hex_grid({hex_area_km2_100_diag}::float, 
+                      ST_XMin(geom)-{hex_buffer}, 
+                      ST_YMin(geom)-{hex_buffer}, 
+                      ST_XMax(geom)+{hex_buffer}, 
+                      ST_YMax(geom)+{hex_buffer}, 
+                      {srid}, 
+                      {srid}, 
+                      {srid}) geom, geom AS old_geom
+    FROM {buffered_study_region}) t
+    WHERE ST_Intersects(geom,old_geom);
+    CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid}_idx ON {hex_grid} (hex_id);
+    CREATE INDEX IF NOT EXISTS {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
+    '''
+    
+    engine.execute(sql)     
+    #else:
+    #    print(f"  - The table {hex_grid_100m} has already been processed.") 
+    
+    #if not engine.dialect.has_table(engine, hex_grid_250m):   
+    # create hexes with some additional offsetting to ensure complete study region coverage
+    sql = f'''
+    CREATE TABLE IF NOT EXISTS {hex_grid} AS
+    SELECT row_number() OVER () AS hex_id, geom
+      FROM (
+      SELECT hex_grid({hex_area_km2_250_diag}::float, 
+                      ST_XMin(geom)-{hex_buffer}, 
+                      ST_YMin(geom)-{hex_buffer}, 
+                      ST_XMax(geom)+{hex_buffer}, 
+                      ST_YMax(geom)+{hex_buffer}, 
+                      {srid}, 
+                      {srid}, 
+                      {srid}) geom, geom AS old_geom
+    FROM {buffered_study_region}) t
+    WHERE ST_Intersects(geom,old_geom);
+    CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid}_idx ON {hex_grid} (hex_id);
+    CREATE INDEX IF NOT EXISTS {hex_grid}_geom_idx ON {hex_grid} USING GIST (geom);
+    '''    
+    
+    engine.execute(sql)     
+    #else:
+    #    print(f"  - The table {hex_grid_250m} has already been processed.") 
         
-        engine.execute(sql)     
-    else:
-        print(f"  - The table {hex_grid_250m} has already been processed.") 
-        
-    if not engine.dialect.has_table(engine, hex_grid_buffer):  
-        sql = f'''
-        CREATE TABLE IF NOT EXISTS {hex_grid_buffer} AS
-        SELECT hex_id, 
-               ST_Buffer(geom,{hex_buffer}) AS geom
-          FROM {hex_grid};
-        CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid_buffer}_idx ON {hex_grid_buffer} (hex_id);
-        CREATE INDEX IF NOT EXISTS {hex_grid_buffer}_geom_idx ON {hex_grid_buffer} USING GIST (geom);
-        '''           
-        engine.execute(sql)
-    else:
-        print(f"  - The table {hex_grid_buffer} has already been processed.") 
+    #if not engine.dialect.has_table(engine, hex_grid_buffer):  
+    sql = f'''
+    CREATE TABLE IF NOT EXISTS {hex_grid_buffer} AS
+    SELECT hex_id, 
+           ST_Buffer(geom,{hex_buffer}) AS geom
+      FROM {hex_grid};
+    CREATE UNIQUE INDEX IF NOT EXISTS {hex_grid_buffer}_idx ON {hex_grid_buffer} (hex_id);
+    CREATE INDEX IF NOT EXISTS {hex_grid_buffer}_geom_idx ON {hex_grid_buffer} USING GIST (geom);
+    '''           
+    engine.execute(sql)
+    #else:
+    #    print(f"  - The table {hex_grid_buffer} has already been processed.") 
 
  
     # grant access to the tables just created
