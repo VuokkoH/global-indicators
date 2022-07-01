@@ -16,9 +16,12 @@ Please follow the instructions below to run the process.
 Project and study region specific parameters are defined external to the code using configuration files. These can be accessed and customized in ``setup_config.py`` to incorporate different study regions and data sources, or re-parameterize for a new project with distinct requirements and outcomes of interest. Make sure you have setup the project configuration before proceeding the analysis.
 
 ### 2. Download and Pre-process Data
-1.  Raw data should be downloaded and pre-processed following a series of Python scripts within **pre_process** folder to prepare study region-specific GeoPackages used as input for the main analysis workflow.
+1.  Download /prepare raw data (study area boundaries, GTFS data, population data) and update the configuration files with correct filenames and paths (`pre_process/_project_configuration.xls` and `data/GTFS/gtfs_config.py`)
+1. 	Pre-process the raw input data following a series of Python scripts within **pre_process** folder. These scripts will generate study region-specific GeoPackages used as input for the main analysis workflow.
 1.  Once all input data are prepared, create a folder named **input** in **global-indicators/process/data** to store the input data.
 1.  Create a second subfolder (this will be empty initially) named **output** in **global-indicators/process/data**.
+
+See further details in the pre-process -subfolder.
 
 ### 3. Run Docker
 1.  In the command prompt / terminal window, change your directory to the **global-indicators** folder. Then type the following
