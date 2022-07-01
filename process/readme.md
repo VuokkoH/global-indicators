@@ -16,7 +16,13 @@ Please follow the instructions below to run the process.
 Project and study region specific parameters are defined external to the code using configuration files. These can be accessed and customized in ``setup_config.py`` to incorporate different study regions and data sources, or re-parameterize for a new project with distinct requirements and outcomes of interest. Make sure you have setup the project configuration before proceeding the analysis.
 
 ### 2. Download and Pre-process Data
-1.  Download /prepare raw data (study area boundaries, GTFS data, population data) and update the configuration files with correct filenames and paths (`pre_process/_project_configuration.xls` and `data/GTFS/gtfs_config.py`)
+1.  Download /prepare raw data and update the configuration files with correct filenames and paths (`pre_process/_project_configuration.xls` and `data/GTFS/gtfs_config.py`)
+	- study area boundaries (store data in ./data and update details in `pre_process/_project_configuration.xls`, sheet: `datasets`)
+	- GTFS data (store GTFS data in `./data/GTFS`, unzip the zip and update details in `data/GTFS/gtfs_config.py`)
+	- GHS population data (store data in `./data/GHS`, check details in `pre_process/_project_configuration.xls`, sheet: `datasets`)
+	- GHS urban regions data (store data in ./data/GHS, check details in `pre_process/_project_configuration.xls`, sheet: `datasets`)
+	- OpenStreetMap data (store data in ./data,  check details in `pre_process/_project_configuration.xls`, sheet: project `settings`)
+	
 1. 	Pre-process the raw input data following a series of Python scripts within **pre_process** folder. These scripts will generate study region-specific GeoPackages used as input for the main analysis workflow.
 1.  Once all input data are prepared, create a folder named **input** in **global-indicators/process/data** to store the input data.
 1.  Create a second subfolder (this will be empty initially) named **output** in **global-indicators/process/data**.
