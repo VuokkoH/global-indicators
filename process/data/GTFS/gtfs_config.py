@@ -26,8 +26,8 @@ GTFS = {'helsinki':[{'gtfs_filename': 'gtfs_helsinki/gtfs_helsinki_hsl_20210927'
                         # as per https://developers.google.com/transit/gtfs/reference#routestxt
                         'Tram'        : {'route_types': [ 0],'agency_id': None},
                         'Metro'       : {'route_types': [ 1],'agency_id': None},
-                        'Rail'        : {'route_types': [ 2],'agency_id': None},
-                        'Bus'         : {'route_types': [ 3],'agency_id': None},
+                        'Rail'        : {'route_types': [ 109],'agency_id': None},
+                        'Bus'         : {'route_types': [ 700, 701, 702, 704],'agency_id': None},
                         'Ferry'       : {'route_types': [ 4],'agency_id': None},
                         'Cable tram'  : {'route_types': [ 5],'agency_id': None},
                         'Aerial lift' : {'route_types': [ 6],'agency_id': None},
@@ -49,8 +49,8 @@ GTFS = {'helsinki':[{'gtfs_filename': 'gtfs_helsinki/gtfs_helsinki_hsl_20210927'
                         # as per https://developers.google.com/transit/gtfs/reference#routestxt
                         'Tram'        : {'route_types': [ 0],'agency_id': None},
                         'Metro'       : {'route_types': [ 1],'agency_id': None},
-                        'Rail'        : {'route_types': [ 2],'agency_id': None},
-                        'Bus'         : {'route_types': [ 3],'agency_id': None},
+                        'Rail'        : {'route_types': [ 109],'agency_id': None},
+                        'Bus'         : {'route_types': [ 700, 701, 702, 704],'agency_id': None},
                         'Ferry'       : {'route_types': [ 4],'agency_id': None},
                         'Cable tram'  : {'route_types': [ 5],'agency_id': None},
                         'Aerial lift' : {'route_types': [ 6],'agency_id': None},
