@@ -1,3 +1,14 @@
+# Setup computing environment
+
+Computing environment set up for running the analysis in Helsinki
+
+- Launched an Ubuntu 20.04 instance, xxlarge volume (Size: 80 GB, RAM: 31.3 GB, VCPUs: 8) via [CSC pouta service](https://research.csc.fi/-/cpouta)
+- Installed docker following these instructions: https://docs.docker.com/engine/install/ubuntu/ --> install using the repository
+- Verify that docker is installed correctly: 
+
+```$ sudo docker run hello-world```
+
+
 # Running the Process
 Please follow the instructions below to run the process.
 
@@ -32,7 +43,7 @@ See further details in the pre-process -subfolder.
 ### 3. Run Docker
 1.  In the command prompt / terminal window, change your directory to the **global-indicators** folder. Then type the following
     ```
-    Docker pull globalhealthyliveablecities/global-indicators:latest
+    docker pull globalhealthyliveablecities/global-indicators:latest
     ```
 1.  Start running docker in your machine
     - On Windows:
