@@ -37,7 +37,7 @@ GTFS = {'helsinki':[{'gtfs_filename': 'gtfs_helsinki/gtfs_helsinki_hsl_20210927'
                     }
                    }],
                    
-            'helsinki_metropol':[{'gtfs_filename': 'gtfs_helsinki/gtfs_helsinki_hsl_20210927',
+            'helsinkihma':[{'gtfs_filename': 'gtfs_helsinki/gtfs_helsinki_hsl_20210927',
                     'gtfs_provider' : 'https://www.hsl.fi/',
                     'gtfs_year' : '2021',
                     'start_date_mmdd' : '20210927',
