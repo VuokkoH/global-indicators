@@ -37,11 +37,7 @@ Liu, S., Higgs, C., Arundel, J., Boeing, G., Cerdera, N., Moctezuma, D., Cerin, 
     ```
     docker pull globalhealthyliveablecities/global-indicators:latest
     ```
-  - Note! You also need a docker container with a postgreSQL database with PostGIS and pgRouting extensions. See **process/pre-process** for more details. To retrieve a suitable docker image, run:
-    ```
-    docker pull cityseer/postgis
-    ```
-Note! You also need a docker container with a postgreSQL database with PostGIS and pgRouting extensions. See process/pre-process for details. 
+  - Note! You also need a docker container with a postgreSQL database with PostGIS and pgRouting extensions. See **process/pre-process** for more details. 
 
     
 5. Then, check **process** folder for more details on the script running process
