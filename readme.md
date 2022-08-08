@@ -42,14 +42,9 @@ Liu, S., Higgs, C., Arundel, J., Boeing, G., Cerdera, N., Moctezuma, D., Cerin, 
     docker pull cityseer/postgis
     ```
 Note! You also need a docker container with a postgreSQL database with PostGIS and pgRouting extensions. See process/pre-process for details. 
-    ```
-    docker pull cityseer/postgis
-    ```
-    
 
     
-    
-5. Then, check **process** folder for more detail script running process
+5. Then, check **process** folder for more details on the script running process
 
 
 # How to contribute
