@@ -31,21 +31,29 @@ Project and study region specific parameters are defined external to the code us
 	- **Study area boundaries** (store data in `./data` and update details in `pre_process/_project_configuration.xls`, sheet: `datasets`)
 	- **GHS population data** (store data in `./data/GHS/WGS84`, check details in `pre_process/_project_configuration.xls`, sheet: `datasets`)
 	- **GHS urban region data** (store data in `./data/GHS`, check details in `pre_process/_project_configuration.xls`, sheet: `datasets`)
-	- **OpenStreetMap data** (store data in `./data`,  check details in `pre_process/_project_configuration.xls`, sheet: `project_settings`)
+	- **OpenStreetMap data** (store data in `./data`,  check details in `pre_process/_project_configuration.xls`, sheet: `project_settings`). Double check that OSM date settings are up-to-date in `process/setup_config.py`.
 	- **GTFS data** (store GTFS data in `./data/GTFS`, and update details in `data/GTFS/gtfs_config.py`). See [pre_process/12_all_cities_gtfs_analysis_readme.md](./pre_process/12_all_cities_gtfs_analysis_readme.md) for detailed instructions.
 	
-GTFS route types in Helsinki region, according to [transitfeeds.com](https://transitfeeds.com/p/helsinki-regional-transport/735). Codes for Extended route types from [Google transit API docs](https://developers.google.com/transit/gtfs/reference/extended-route-types).
+	GTFS route types in Helsinki region, according to [transitfeeds.com](https://transitfeeds.com/p/helsinki-regional-transport/735). Codes for Extended route types from [Google transit API docs](https://developers.google.com/transit/gtfs/reference/extended-route-types).
 
-		- 0 Tram / Streetcar / Light Rail
-		- 1 Subway / Metro
-		- 4 Ferry
-		- 109 Suburban Railway (Extended)
-		- 700 Bus (Extended)
-		- 701 Regional Bus (Extended)
-		- 702 Express Bus (Extended)
-		- 704 Local Bus (Extended)
+			- 0 Tram / Streetcar / Light Rail
+			- 1 Subway / Metro
+			- 4 Ferry
+			- 109 Suburban Railway (Extended)
+			- 700 Bus (Extended)
+			- 701 Regional Bus (Extended)
+			- 702 Express Bus (Extended)
+			- 704 Local Bus (Extended)
 	
 1. 	Pre-process the raw input data following a series of Python scripts within **pre_process** folder. These scripts will generate study region-specific GeoPackages used as input for the main analysis workflow.
+	- Run scripts prefixed `00` through `12`. When testing /debugging, better to run them one-by-one. 
+	- Remember to also run _export_gpkg.py
+1. Create preliminary validation report (not necessary..). 
+	- First, run: `pre_process/_all_cities_summary_tex_tables_for_report.py` 
+	- Then, run: `pre_process/_create_preliminary_validation_report.py`
+	- The latter might only work one region at a time?  (not sure though, did this step rather quickly..)
+	- output PDF can be found under `process/collaboration_report/_build`
+	- Note! Need to downgrade  `sphinxcontrib-bibtex`; I did this via: `conda install  sphinxcontrib-bibtex==1.0.0`
 1.  Once all input data are prepared, create a folder named **input** in **global-indicators/process/data** to store the input data.
 1.  Create a second subfolder (this will be empty initially) named **output** in **global-indicators/process/data**.
 
