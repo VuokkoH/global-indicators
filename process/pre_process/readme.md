@@ -4,13 +4,15 @@ Project, study region and resource parameters are defined using spreadsheets in 
  
 # set up spatial database container, based on PostgreSQL with PostGIS and pgRouting
 Retrieve the docker image
+
 ```
-docker pull cityseer/postgis
+docker pull starefossen/pgrouting
 ```
 
-Run the postgis server container with persistent storage (replace the password for Postgis to correspond to your project configuration)
+# run postgis server container
+
 ```
-docker run --name=postgis -d -e PG_USER=postgres -e PG_PASSWORD=password -e DB_NAME=ind_global -p 127.0.0.1:5433:5432 --restart=unless-stopped --volume=/var/lib/postgis:/postgresql/11/main cityseer/postgis:latest
+docker run --name=pgrouting -d -e POSTGRES_USER=postgres -e POSTGRES_PASS=password -e POSTGRES_DBNAME=ind_global  -p 127.0.0.1:5433:5432 -e pg_data:/var/lib/postgresql starefossen/pgrouting
 ```
 
 # run analysis environment 
