@@ -2,7 +2,7 @@
 
 Computing environment set up for running the analysis in Helsinki
 
-- Launched an Ubuntu 20.04 instance, xxlarge volume (Size: 80 GB, RAM: 31.3 GB, VCPUs: 8) via [CSC pouta service](https://research.csc.fi/-/cpouta)
+- Launched an Ubuntu 20.04 instance, 3xlarge volume (Size: 80 GB, RAM: 62.5 GB, VCPUs: 8) via [CSC pouta service](https://research.csc.fi/-/cpouta)
 - Installed docker following these instructions: https://docs.docker.com/engine/install/ubuntu/ --> install using the repository
 - Verify that docker is installed correctly: 
 
