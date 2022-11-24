@@ -14,7 +14,82 @@
 analysis_period = ['07:00:00', '19:00:00']
 headway_intervals = [20,30] # not implemented
 dissolve_cities = ['hanoi'] # aggregate mean of headways by stop_id; does not retain mode
-GTFS = {'maiduguri':[],
+GTFS = {
+	
+	
+	
+	GTFS = {'helsinki':[{'gtfs_filename': 'gtfs_finland_helsinki/gtfs_helsinki_hsl_20210927',
+                    'gtfs_provider' : 'https://www.hsl.fi/',
+                    'gtfs_year' : '2021',
+                    'start_date_mmdd' : '20210927',
+                    'end_date_mmdd' : '20211110',
+                     'bbox' : (24.5001693455642986,60.0626721895615034, 25.2544954744790004,60.4012548634648994), # THIS IS NOW HMA BBOX
+                     'crs':'epsg:32635',
+                    'validation': False,
+                    'modes' : {
+                        # as per https://developers.google.com/transit/gtfs/reference#routestxt
+			# extended route types: https://developers.google.com/transit/gtfs/reference/extended-route-types
+                        'Tram'        : {'route_types': [ 0],'agency_id': None},
+                        'Metro'       : {'route_types': [ 1],'agency_id': None},
+                        'Rail'        : {'route_types': [ 109],'agency_id': None},
+                        'Bus'         : {'route_types': [ 700, 701, 702, 704],'agency_id': None},
+                        'Ferry'       : {'route_types': [ 4],'agency_id': None},
+                        'Cable tram'  : {'route_types': [ 5],'agency_id': None},
+                        'Aerial lift' : {'route_types': [ 6],'agency_id': None},
+                        'Funicular'   : {'route_types': [ 7],'agency_id': None},
+                        'Trolleybus'  : {'route_types': [11],'agency_id': None},
+                        'Monorail'    : {'route_types': [12],'agency_id': None},
+                    }
+                   }],
+                   
+            'helsinkihma':[{'gtfs_filename': 'gtfs_finland_helsinki/gtfs_helsinki_hsl_20210927',
+                    'gtfs_provider' : 'https://www.hsl.fi/',
+                    'gtfs_year' : '2021',
+                    'start_date_mmdd' : '20210927',
+                    'end_date_mmdd' : '20211110',
+                     'bbox' : (24.5001693455642986,60.0626721895615034, 25.2544954744790004,60.4012548634648994),  # THIS IS NOW HMA BBOX
+                     'crs':'epsg:32635',
+                    'validation': False,
+                    'modes' : {
+                        # as per https://developers.google.com/transit/gtfs/reference#routestxt
+			# extended route types: https://developers.google.com/transit/gtfs/reference/extended-route-types
+                        'Tram'        : {'route_types': [ 0],'agency_id': None},
+                        'Metro'       : {'route_types': [ 1],'agency_id': None},
+                        'Rail'        : {'route_types': [ 109],'agency_id': None},
+                        'Bus'         : {'route_types': [ 700, 701, 702, 704],'agency_id': None},
+                        'Ferry'       : {'route_types': [ 4],'agency_id': None},
+                        'Cable tram'  : {'route_types': [ 5],'agency_id': None},
+                        'Aerial lift' : {'route_types': [ 6],'agency_id': None},
+                        'Funicular'   : {'route_types': [ 7],'agency_id': None},
+                        'Trolleybus'  : {'route_types': [11],'agency_id': None},
+                        'Monorail'    : {'route_types': [12],'agency_id': None},
+                    }
+                   }],
+                }
+
+            'lahti':[{'gtfs_filename': 'gtfs_finland_lahti/gtfs_lahti_lsl_20220815',
+                    'gtfs_provider' : 'https://www.lsl.fi/',
+                    'gtfs_year' : '2022',
+                    'start_date_mmdd' : '20220915',
+                    'end_date_mmdd' : '20220815',
+                     'bbox' : (25.24928418,60.67725172, 26.2609529,61.58006199),  # LAHTI
+                     'crs':'epsg:32635',
+                    'validation': False,
+                    'modes' : {
+                        # as per https://developers.google.com/transit/gtfs/reference#routestxt
+			    Tram       : {'route_types': [ 0],'agency_id': }
+			    Metro      : {'route_types': [ 1],'agency_id': }
+			    Rail       : {'route_types': [ 2],'agency_id': }
+			    Bus        : {'route_types': [ 3],'agency_id': }
+			    Ferry      : {'route_types': [ 4],'agency_id': }
+			    Cable tram : {'route_types': [ 5],'agency_id': }
+			    Aerial lift: {'route_types': [ 6],'agency_id': }
+			    Funicular  : {'route_types': [ 7],'agency_id': }
+			    Trolleybus : {'route_types': [11],'agency_id': }
+			    Monorail   : {'route_types': [12],'agency_id': }
+                    }
+                   }],
+		'maiduguri':[],
 		'hong_kong':[{'gtfs_filename': 'gtfs_china_hongkong/gtfs_china_hongkong_hk_2019',
                     'gtfs_provider' : 'data.gov.hk',
                     'gtfs_year' : '2019',
