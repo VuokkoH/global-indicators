@@ -24,7 +24,7 @@
 
 ## GTFS spesifics
 
-GTFS route types in Helsinki region, according to [transitfeeds.com](https://transitfeeds.com/p/helsinki-regional-transport/735). Codes for Extended route types from [Google transit API docs](https://developers.google.com/transit/gtfs/reference/extended-route-types).
+GTFS route types in Helsinki region, according to [transitfeeds.com](https://transitfeeds.com/p/helsinki-regional-transport/735/latest/routes). Codes for Extended route types from [Google transit API docs](https://developers.google.com/transit/gtfs/reference/extended-route-types).
 
 			- 0 Tram / Streetcar / Light Rail
 			- 1 Subway / Metro
